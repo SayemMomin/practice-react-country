@@ -1,10 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Country = (props) => {
    //console.log(props.country)
     const {name, capital, population, alpha2Code} = props.country
-    const countryId = 'alpha2Code'
+    
+    const history = useHistory();
+    
+    const handleClicked = (countryId) => {
+        console.log('click')
+        history.push(`/country/${countryId}`);
+    }
     const countryStyle = {
         border: '2px solid red',
         margin: '5px',
@@ -17,7 +23,7 @@ const Country = (props) => {
            <h4>Population: {population} </h4>
            <h4>Country Code: {alpha2Code}</h4>
            <p><Link to={`/country/${alpha2Code}`}>Show Details</Link></p>
-           
+           <button style={{backgroundColor: 'lightblue'}} onClick={() => handleClicked(alpha2Code)}>Click here</button>
         </div>
     );
 };

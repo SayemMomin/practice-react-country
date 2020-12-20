@@ -11,10 +11,15 @@ const Home = () => {
         const url = 'https://restcountries.eu/rest/v2/all'
         fetch(url)
         .then(res => res.json())
-        .then(data => setCountries(data))
+        .then(data => {
+            console.log(data)
+            setCountries(data)
+        
+        })
     }, [])
     return (
         <div>
+            <h2></h2>
             <h3 style={{textAlign: 'center'}}>Total country: {countries.length} </h3>
             {
                 countries.map(country => <Country 

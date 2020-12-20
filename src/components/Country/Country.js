@@ -3,12 +3,12 @@ import { Link, useHistory } from 'react-router-dom';
 
 const Country = (props) => {
    //console.log(props.country)
-    const {name, capital, population, alpha2Code} = props.country
+    const {name, capital, population, translations, alpha2Code} = props.country
     
     const history = useHistory();
     
     const handleClicked = (countryId) => {
-        console.log('click')
+        //console.log('click')
         history.push(`/country/${countryId}`);
     }
     const countryStyle = {
@@ -21,9 +21,10 @@ const Country = (props) => {
            <h3>Country Name: {name} </h3> 
            <h4>Capital: {capital} </h4>
            <h4>Population: {population} </h4>
+           <h4>Address: {translations.de} </h4>
            <h4>Country Code: {alpha2Code}</h4>
-           <p><Link to={`/country/${alpha2Code}`}>Show Details</Link></p>
-           <button style={{backgroundColor: 'lightblue'}} onClick={() => handleClicked(alpha2Code)}>Click here</button>
+           <p><Link to={`/country/${name}`}>Show Details</Link></p>
+           <button style={{backgroundColor: 'lightblue'}} onClick={() => handleClicked(name)}>Click here</button>
         </div>
     );
 };
